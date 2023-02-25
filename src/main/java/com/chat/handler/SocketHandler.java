@@ -32,7 +32,7 @@ public class SocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        //소켓 연결
+        //소켓 연결시 실행
         super.afterConnectionEstablished(session);
         sessionMap.put(session.getId(), session);
         JSONObject obj = new JSONObject();
@@ -43,19 +43,9 @@ public class SocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        //소켓 종료
+        //소켓 종료시 실행
         sessionMap.remove(session.getId());
         super.afterConnectionClosed(session, status);
     }
 
-    /*private static JSONObject jsonToObjectParser(String jsonStr) {
-        JSONParser parser = new JSONParser();
-        JSONObject obj = null;
-        try {
-            obj = (JSONObject) parser.parse(jsonStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return obj;
-    }*/
 }

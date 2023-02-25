@@ -5,12 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/chat")
 
 public class ChatController {
 
-    @GetMapping("/hello")
-    public String hello(){
+    @GetMapping("/room")
+    public String create()
+    {
         return "GD HELLO!!";
+
     }
+
 }
