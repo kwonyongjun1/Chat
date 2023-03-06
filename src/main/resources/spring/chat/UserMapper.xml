@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chat.mapper.UserMapper">
+
+    <!-- 유저정보 조회  -->
+    <select id = "selectUserInfo"
+            resultType = "list">
+        SELECT
+            userId,
+            userNm,
+        FROM user_tb
+        where userId = #{userId}
+    </select>
+
+    <!-- 유저정보 등록  -->
+    <insert id="insertUserInfo"
+            parameterType= "com.chat.vo.ChatVO">
+        INSERT INTO
+        user_tb
+        VALUES ( #{userId} , #{userNm})
+
+    </insert>
+
+    <!-- 유저정보 삭제  -->
+    <delete id="deleteChatRoomRel"
+            parameterType= "com.chat.vo.ChatVO">
+        DELETE FROM
+            user_chat_room_rel_tb
+        where userId = #{userId}
+    </delete>
+
+    <delete id="deleteUserInfo"
+            parameterType= "com.chat.vo.ChatVO">
+        DELETE FROM
+        user_tb
+        where userId = #{userId}
+    </delete>
+
+    <!-- 유저정보 수정  -->
+    <update id="updateUserInfo"
+            parameterType= "com.chat.vo.ChatVO">
+        UPDATE
+        user_tb
+        SET userNm = #{userNm}
+        WHERE userId = #{userId}
+    </update>
+
+</mapper>

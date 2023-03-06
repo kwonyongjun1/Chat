@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chat.mapper.ChatRoomMapper">
+
+    <!-- 채팅방 조회  -->
+    <select id = "selectChatRoom"
+            parameterMap="com.chat.vo.ChatVO"
+            resultType = "list">
+        SELECT
+            chatroomTB.roomId,
+            chatroomTB.roomNm,
+            chatroomTB.datetime
+        FROM user_chat_room_rel_tb relTB
+        LEFT OUTER JOIN chat_room_tb chatroomTB
+        ON relTB.roomId = chatroomTB.roomId
+        where relTB.userId = #{userId}
+    </select>
+
+    <!-- 채팅방 생성  -->
+    <insert id="insertChatRoom"
+            parameterType= "com.chat.vo.ChatVO">
+        INSERT INTO chat_room_tb(roomId, roomNm)
+        VALUES ( #{roomId} , #{roomNm})
+    </insert>
+
+    <!-- 채팅방 삭제 -->
+    <delete id="deleteChatRoomRel"
+            parameterType= "com.chat.vo.ChatVO">
+        DELETE FROM
+            user_chat_room_rel_tb
+        where roomId = #{roomId}
+    </delete>
+
+    <delete id="deleteChatRoom"
+            parameterType= "com.chat.vo.ChatVO">
+        DELETE FROM
+            chat_room_tb
+        where roomId = #{roomId}
+    </delete>
+    <!-- 채팅 내용 저장   -->
+    <insert id="insertMessage"
+            parameterMap="com.chat.vo.ChatVO">
+        INSERT INTO chat_room_message_tb(roomId, senderNm, message)
+        VALUES (#{roomId}, #{senderNm}, #{message} )
+    </insert>
+
+</mapper>
