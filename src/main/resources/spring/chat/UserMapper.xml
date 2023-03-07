@@ -5,10 +5,11 @@
 
     <!-- 유저정보 조회  -->
     <select id = "selectUserInfo"
-            resultType = "list">
+            parameterType="com.chat.vo.ChatVO"
+            resultType = "java.util.ArrayList">
         SELECT
             userId,
-            userNm,
+            userNm
         FROM user_tb
         where userId = #{userId}
     </select>

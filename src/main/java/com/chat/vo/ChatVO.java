@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Data
 @Repository
+
 public class ChatVO {
     /* 사용자 ID  */
     private String userId;

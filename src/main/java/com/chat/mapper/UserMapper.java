@@ -14,7 +14,7 @@ public interface UserMapper {
      * 유저정보 조회
      * @return
      */
-    List<ChatVO> selectUserInfo();
+    List<ChatVO> selectUserInfo(ChatVO chatVO);
 
     /**
      * 유저정보 등록

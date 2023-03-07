@@ -11,11 +11,8 @@ public class ChatServiceImpl implements ChatService {
     @Autowired
     private ChatMapper chatMapper;
 
-    @Autowired
-    private UserMapper userMapper;
-
     @Override
-    public String test() {
+    public String getTest() {
         String a = chatMapper.getTest();
 
         return a;

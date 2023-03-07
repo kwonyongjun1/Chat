@@ -5,7 +5,7 @@
 
     <!-- 채팅방 조회  -->
     <select id = "selectChatRoom"
-            parameterMap="com.chat.vo.ChatVO"
+            parameterType="com.chat.vo.ChatVO"
             resultType = "list">
         SELECT
             chatroomTB.roomId,
@@ -40,7 +40,7 @@
     </delete>
     <!-- 채팅 내용 저장   -->
     <insert id="insertMessage"
-            parameterMap="com.chat.vo.ChatVO">
+            parameterType="com.chat.vo.ChatVO">
         INSERT INTO chat_room_message_tb(roomId, senderNm, message)
         VALUES (#{roomId}, #{senderNm}, #{message} )
     </insert>
