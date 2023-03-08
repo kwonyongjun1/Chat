@@ -9,4 +9,8 @@ public interface UserService {
      */
     int registerUser(ChatVO chatVO);
 
+    /**
+     * 로그인 여부 확인
+     */
+
 }

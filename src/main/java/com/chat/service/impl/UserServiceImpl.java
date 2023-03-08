@@ -24,8 +24,14 @@ public class UserServiceImpl implements UserService {
         /**
          * 유저 정보 조회
          */
-        List<ChatVO> hi = userMapper.selectUserInfo(chatVO);
+        List<ChatVO> userInfoList = userMapper.selectUserInfo(chatVO);
 
+        // 기존 ID
+        if(userInfoList.size() == 0 ){
+            //TODO 유저
+        }else{
+
+        }
 
         return 0;
     }
